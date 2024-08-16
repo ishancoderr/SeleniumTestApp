@@ -8,7 +8,15 @@ async function testContent() {
             until.elementLocated(By.id('content-id')), 3000
         )
 
-        console.log(await contentElement.getText())
+        let contentText = await contentElement.getText()
+        console.log("Content Text:", contentText);
+
+        // Check the number of characters 
+        if (contentText.length < 1000) {
+            console.log("Test Passed: Content has less than 1000 characters.");
+        } else {
+            console.log("Test Failed: Content has 1000 or more characters.");
+        }
 
     } catch (error) {
         console.error('An error occurred:', error)
